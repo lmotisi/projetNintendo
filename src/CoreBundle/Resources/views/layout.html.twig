@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% endblock %}</title>
+		
 		{% stylesheets '@twbs_css' filter='cssrewrite' %}
 			<link rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
@@ -10,12 +12,18 @@
 
 	<body>
 	<div class="container">
-		<div id="header" class="jumbotron">
-		  <h1>Nintendo Friends</h1>
-		  <p>
-			A compléter.
-		  </p>
+		<div class="page-header">
+			<h1>Nintendo Friends</h1>
+			<ul class="nav nav-pills">
+				<li role="presentation" {% if app.request.attributes.get("_route") == "core_homepage" %} class="active"{% endif %}><a href="{{ path('core_homepage') }}">Accueil</a></li>
+				<li role="presentation" {% if app.request.attributes.get("_route") == "" %} class="active"{% endif %}><a href="#">Inscription</a></li>
+				<li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_security_login" %} class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+				
+			</ul>
 		</div>
+		
+		{% block body %}
+		{% endblock %}
 		
 		<footer>
 		  <p>Nintendo Friends © {{ 'now'|date('Y') }}</p>
