@@ -1,3 +1,9 @@
 core_homepage:
     path:     /
     defaults: { _controller: CoreBundle:Default:index }
+    
+core_fiche_jeu:
+    path:    /jeu/{console}/{nom}
+    defaults: { _controller: CoreBundle:Default:ficheJeu }
+    requirements:
+        console: 3ds|WiiU

@@ -1,5 +1,7 @@
 {% extends "CoreBundle::layout.html.twig" %}
 
+{% block title %} {% endblock %}
+
 {% block body %}
 	
   {% for key, messages in app.session.flashbag.all() %}

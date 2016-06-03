@@ -9,7 +9,26 @@
 		Vous pouvez d'ores et déjà vous inscrire ou vous connecter afin de pouvoir contacter les membres disponibles 
 		pour jouer à vos jeux préférés en ligne.
 		</p>
-	
+		<h2> Jeux 3ds </h2>
+		<div class="row">
+		  {% for jeu in listeJeux3ds %}
+		  <div class="col-xs-3 col-md-2">
+			<a href="#" class="thumbnail">
+			  <img src="{{ asset( jeu.image.url ) }}" alt="{{ jeu.image.alt }}">
+			</a>
+		  </div>
+		  {% endfor %}
+		</div>
+		<h2> Jeux Wii U </h2>
+		<div class="row">
+		  {% for jeu in listeJeuxWiiU %}
+		  <div class="col-xs-3 col-md-2">
+			<a href="#" class="thumbnail">
+			  <img src="{{ asset( jeu.image.url ) }}" alt="{{ jeu.image.alt }}">
+			</a>
+		  </div>
+		  {% endfor %}
+		</div>
 	</section>
 
 {% endblock %}
