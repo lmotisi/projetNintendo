@@ -13,19 +13,22 @@
 	<body>
 	<div class="container">
 		<div class="page-header">
-			<h1>Nintendo Friends</h1>
+			<h1 class="text-center">Nintendo Friends</h1>
 			<ul class="nav nav-pills">
-				<li role="presentation" {% if app.request.attributes.get("_route") == "core_homepage" %} class="active"{% endif %}><a href="{{ path('core_homepage') }}">Accueil</a></li>
+				<li role="presentation" {% if app.request.attributes.get("_route") == "core_accueil" %} class="active"{% endif %}><a href="{{ path('core_accueil') }}">Accueil</a></li>
 				<li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_registration_register" %} class="active"{% endif %}><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-				<li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_security_login" %} class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-				
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				  <li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_profile_show" %} class="active"{% endif %}><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+				{% else %}  
+				  <li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_security_login" %} class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		
 		{% block body %}
 		{% endblock %}
 		
-		<footer>
+		<footer class="text-center">
 		  <p>Nintendo Friends © {{ 'now'|date('Y') }}</p>
 		</footer>
 	</div>

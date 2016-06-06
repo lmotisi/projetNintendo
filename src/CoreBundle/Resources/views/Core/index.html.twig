@@ -4,16 +4,16 @@
 
 {% block body %}
 	<section>
-		<p>
+		<p class="text-center">
 		Bienvenue sur le site Nintendo Friends, sur lequel vous pouvez communiquer avec des joueurs nintendo de tous horizons. 
-		Vous pouvez d'ores et déjà vous inscrire ou vous connecter afin de pouvoir contacter les membres disponibles 
+		Vous pouvez d'ores et déjà vous <a href="{{ path('fos_user_registration_register') }}">inscrire</a> ou vous <a href="{{ path('fos_user_security_login') }}">connecter</a> afin de pouvoir contacter les membres disponibles 
 		pour jouer à vos jeux préférés en ligne.
 		</p>
 		<h2> Jeux 3ds </h2>
 		<div class="row">
 		  {% for jeu in listeJeux3ds %}
 		  <div class="col-xs-3 col-md-2">
-			<a href="#" class="thumbnail">
+			<a href="{{ path('core_fiche_jeu', {'console' : '3ds', 'id': jeu.id}) }}" class="thumbnail">
 			  <img src="{{ asset( jeu.image.url ) }}" alt="{{ jeu.image.alt }}">
 			</a>
 		  </div>
@@ -23,7 +23,7 @@
 		<div class="row">
 		  {% for jeu in listeJeuxWiiU %}
 		  <div class="col-xs-3 col-md-2">
-			<a href="#" class="thumbnail">
+			<a href="{{ path('core_fiche_jeu', {'console' : 'WiiU', 'id': jeu.id}) }}" class="thumbnail">
 			  <img src="{{ asset( jeu.image.url ) }}" alt="{{ jeu.image.alt }}">
 			</a>
 		  </div>

@@ -3,6 +3,7 @@
 namespace CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
@@ -18,9 +19,20 @@ class DefaultController extends Controller
 		));
     }
 	
-	public function ficheJeuAction($console, $nom) 
+	public function ficheJeuAction($console, $id) 
 	{
-		return ("");
+		$em = $this->getDoctrine()->getManager();
 		
+		$jeu = $em->getRepository('CoreBundle:Jeu')->find($id);
+		if ($jeu != null) 
+		{
+			return $this->render('CoreBundle:Core:ficheJeu.html.twig', array(
+			'jeu' => $jeu
+			));
+		} else 
+		{
+			$url = $this->get('router')->generate('core_accueil');
+			return new RedirectResponse($url);
+		}
 	}
 }

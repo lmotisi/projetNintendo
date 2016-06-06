@@ -1,0 +1,87 @@
+<?php
+
+namespace UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+	
+	/**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date")
+     */
+	private $dateNaissance;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=255)
+     */
+	private $sexe;
+	
+	/**
+	 * @ORM\Column(name="description", type="text")
+	 */
+	private $description;
+	
+	
+	/**
+     * @var int
+     *
+     * @ORM\Column(name="nombre_joueurs", type="integer")
+     */
+	private $codeAmi;
+	
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="nnid", type="string", length=255)
+     */
+	private $nnid;
+	
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="skype", type="string", length=255)
+     */
+	private $skype;
+	
+	
+	/**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_inscription", type="date")
+     */
+	private $dateInscription;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+
