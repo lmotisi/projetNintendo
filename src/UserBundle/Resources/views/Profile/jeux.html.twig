@@ -1,0 +1,29 @@
+{% extends "UserBundle:Profile:profil.html.twig" %}
+
+{% block contenu_profil %}
+
+	<h2 class="text-center"> Ma Liste de Jeux  </h2>
+
+	<div class="well row">
+	  <div class="col-md-6">
+	    {{ form(form3ds) }}
+		
+		<p> Jeux ajoutés : </p>
+		<ul>
+			{% for jeu in jeux3ds %}
+			   <li> {{ jeu.nom }} </li>
+			{% endfor %}
+		</ul>
+	  </div>
+	  <div class="col-md-6">
+	     {{ form(formWiiU) }}
+		<p> Jeux ajoutés : </p>
+		<ul>
+			{% for jeu in jeuxWiiU %}
+				<li> {{ jeu.nom }} </li>
+			{% endfor %}
+		</ul>
+	  </div>
+	</div>
+
+{% endblock contenu_profil %}

@@ -1,5 +1,10 @@
-{% extends "UserBundle::layout.html.twig" %}
+{% extends "UserBundle:Profile:profil.html.twig" %}
 
-{% block fos_user_content %}
-{% include "UserBundle:Profile:edit_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block contenu_profil %}
+	<div class="row">
+	  <h2 class="text-center"> Mes informations </h2>
+	  <div class="well col-lg-offset-3 col-lg-6 col-lg-offset-3">
+	  {% include "UserBundle:Profile:edit_content.html.twig" %}
+	  </div>
+	</div>
+{% endblock contenu_profil %}

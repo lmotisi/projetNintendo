@@ -10,4 +10,12 @@ namespace CoreBundle\Repository;
  */
 class JeuRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findJeux($console)
+	{
+		$queryBuilder = $this->createQueryBuilder('j')
+		->where('j.console = :console')
+		->setParameter('console', $console);
+		
+		return $queryBuilder;
+	}
 }

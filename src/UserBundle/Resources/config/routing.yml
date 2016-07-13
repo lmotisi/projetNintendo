@@ -1,0 +1,3 @@
+user_profil_jeux:
+    path:    /profil/jeux
+    defaults: { _controller: UserBundle:Profile:jeux }

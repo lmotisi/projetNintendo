@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -72,13 +73,20 @@ class User extends BaseUser
      * @ORM\Column(name="date_inscription", type="date")
      */
 	private $dateInscription;
+	
+	
+	/**
+	 * @ORM\ManyToMany(targetEntity="CoreBundle\Entity\Jeu")
+	 */
+	private $jeux;
 
 	
 	
 	public function __construct()
    {
-	$this->dateInscription = new \Datetime();   
-	parent::__construct();
+	  $this->dateInscription = new \Datetime();   
+	  parent::__construct();
+	  $this->jeux = new ArrayCollection();
     
    }
 	
@@ -259,5 +267,55 @@ class User extends BaseUser
     public function getDateInscription()
     {
         return $this->dateInscription;
+    }
+
+    /**
+     * Add jeux
+     *
+     * @param \CoreBundle\Entity\Jeu $jeux
+     *
+     * @return User
+     */
+    public function addJeux(\CoreBundle\Entity\Jeu $jeux)
+    {
+
+        $this->jeux[] = $jeux;
+
+        return $this;
+    }
+
+    /**
+     * Set jeux
+     *
+     * @param \CoreBundle\Entity\Jeu $jeux
+     *
+     * @return User
+     */
+    public function setJeux(\CoreBundle\Entity\Jeu $jeux)
+    {
+        $this->jeux[] = $jeux;
+
+        return $this;
+    }	
+	
+	
+    /**
+     * Remove jeux
+     *
+     * @param \CoreBundle\Entity\Jeu $jeux
+     */
+    public function removeJeux(\CoreBundle\Entity\Jeu $jeux)
+    {
+        $this->jeux->removeElement($jeux);
+    }
+
+    /**
+     * Get jeux
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJeux()
+    {
+        return $this->jeux;
     }
 }

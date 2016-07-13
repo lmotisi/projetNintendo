@@ -1,0 +1,13 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+	<ul class="nav nav-tabs">
+	  <li role="presentation" {% if app.request.attributes.get("_route") == "fos_user_profile_show" %} class="active" {% endif %} ><a href="#">Infos</a></li>
+	  <li role="presentation" {% if app.request.attributes.get("_route") == "user_profil_jeux" %} class="active" {% endif %} ><a href="{{ path('user_profil_jeux') }}">Jeux</a></li>
+	  <li role="presentation"><a href="#">Amis</a></li>
+	</ul>
+	{% block contenu_profil %}
+	
+	{% endblock contenu_profil %}
+{% endblock fos_user_content %}

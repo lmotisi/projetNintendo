@@ -1,16 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Infos</a></li>
-  <li role="presentation"><a href="#">Jeux</a></li>
-  <li role="presentation"><a href="#">Amis</a></li>
-</ul>
-
 <div class="fos_user_user_show">
 	<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
 	<p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-	<p>dateNaissance : {{ user.dateNaissance }}</p>
+	<p>dateNaissance : {{ user.dateNaissance|date('d/m/Y') }}</p>
 	<p>sexe : {{ user.sexe }}</p>
 	<p>codeAmi: {{ user.codeAmi }}</p>
 	<p>nnid : {{ user.nnid }}</p>
